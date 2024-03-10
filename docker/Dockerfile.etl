@@ -1,0 +1,15 @@
+FROM python:3.10.12
+
+WORKDIR /app
+
+COPY . /app
+
+RUN apt-get clean \
+    && apt-get -y update
+
+RUN apt-get -y install \
+    python3-dev \
+    sqlite3\
+    build-essential
+
+CMD ["python", "./src/etl.py"]

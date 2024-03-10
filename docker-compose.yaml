@@ -1,0 +1,17 @@
+version: '3'
+services:
+  etl:
+    image: ghofranechenenaoui/etl_img:latest
+    volumes:
+      - ./data/data-source:/app/data/data-source
+      - ./data/data-output:/app/data/data-output
+      - ./logs:/app/logs
+
+  api_flask:
+    image: ghofranechenenaoui/etl_flask:latest
+    depends_on:
+      - etl
+    volumes:
+      - ./data/data-output:/app/data/data-output
+      - ./logs:/app/logs
+    network_mode: "host"

@@ -1,0 +1,26 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: etl-job
+spec:
+  template:
+    metadata:
+      name: etl-pod
+    spec:
+      containers:
+      - name: etl
+        image: ghofranechenenaoui/etl_img:latest
+        volumeMounts:
+        - name: data-output
+          mountPath: /app/data/data-output
+        - name: logs
+          mountPath: /app/logs
+      restartPolicy: Never
+      volumes:
+      - name: data-output
+        persistentVolumeClaim:
+          claimName: data-output-pvc
+      - name: logs
+        persistentVolumeClaim:
+          claimName: logs-pvc
+  backoffLimit: 4

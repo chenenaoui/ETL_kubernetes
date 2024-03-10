@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+        - name: api
+          image: ghofranechenenaoui/etl_flask:latest
+          ports:
+            - containerPort: 5000     
+          volumeMounts:
+            - name: data-output
+              mountPath: /app/data/data-output
+            - name: logs
+              mountPath: /app/logs
+      volumes:
+        - name: data-output
+          persistentVolumeClaim:
+            claimName: data-output-pvc
+        - name: logs
+          persistentVolumeClaim:
+            claimName: logs-pvc
