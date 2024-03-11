@@ -1,10 +1,12 @@
-# Project Overview
+# Home Task - Data Engineer - 1
 
-This project encompasses a simple ETL (Extract, Transform, Load) pipeline and a Flask-based REST API. The ETL pipeline processes CSV files, loading data into a SQLite database. The API allows users to retrieve the most recently ingested data by returning the first 10 lines. The entire solution has been uploaded and deployed on Kubernetes for smooth scalability and efficient management.
+## Project Overview
+
+This project, developed by [Your Name], encompasses a sophisticated ETL (Extract, Transform, Load) pipeline and a Flask-based REST API. The ETL pipeline efficiently processes CSV files, loading the data into a SQLite database. The API allows users to access the most recently ingested data by retrieving the first 10 lines. The entire solution has been meticulously uploaded and deployed on Kubernetes, ensuring seamless scalability and efficient management.
 
 ---
 
-## A. Installation
+## Installation
 
 To run this project locally, follow these steps:
 
@@ -22,9 +24,10 @@ To run this project locally, follow these steps:
 
 ---
 
-## B. Running the ETL Pipeline and API Locally
+## Running the ETL Pipeline and API Locally
 
-Utilizing Docker Compose simplifies the orchestration of your application's containers. It is used to define and run multi-container Docker applications, with configuration specified in a `docker-compose.yml` file. Follow these steps:
+Utilizing Docker Compose simplifies the orchestration of your application's containers. 
+Docker Compose defines and runs multi-container Docker applications, with configuration specified in a `docker-compose.yml` file. Follow these steps:
 
 1. **Start the Docker containers:**
 
@@ -32,7 +35,7 @@ Utilizing Docker Compose simplifies the orchestration of your application's cont
     docker-compose up -d
     ```
 
-    This command launches the containers in detached mode, allowing them to run in the background.
+    This command launches the containers in detached mode, enabling them to run in the background.
 
 2. **Check the status of the containers:**
 
@@ -58,7 +61,7 @@ Utilizing Docker Compose simplifies the orchestration of your application's cont
 
 ---
 
-## C. Kubernetes Deployment
+## Kubernetes Deployment
 
 1. **Install Minikube and kubectl:**
 
@@ -73,7 +76,7 @@ Utilizing Docker Compose simplifies the orchestration of your application's cont
     sudo apt-get update && sudo apt-get install -y kubectl
     ```
 
-3. **Start Minikube:**
+2. **Start Minikube:**
 
     ```bash
     minikube start
@@ -117,7 +120,7 @@ Utilizing Docker Compose simplifies the orchestration of your application's cont
     minikube service api-service --url
     ```
 
-    When you run `minikube service api-service --url`, it will expose the "api-service" and print the corresponding URL. 
+    When you run `minikube service api-service --url`, it will print the corresponding URL. 
 
     ```bash
     minikube service api-service
@@ -129,7 +132,7 @@ Utilizing Docker Compose simplifies the orchestration of your application's cont
 
     ![Docker Compose](./images/web_output.png)
 
-7. **To access the pod where the Flask application is running, use:**
+6. **To access the pod where the Flask application is running, use:**
 
     ```bash
     kubectl exec -it <pod_name> -- /bin/sh
@@ -145,13 +148,13 @@ Utilizing Docker Compose simplifies the orchestration of your application's cont
 
     ![Docker Compose](./images/check_logs.png)
 
-8. **Delete all Kubernetes resources:**
+7. **Delete all Kubernetes resources:**
 
     ```bash
     kubectl delete all --all
     ```
 
-9. **Stop Minikube:**
+8. **Stop Minikube:**
 
     ```bash
     minikube stop
