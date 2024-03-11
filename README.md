@@ -148,16 +148,12 @@ Docker Compose defines and runs multi-container Docker applications, with config
 
     ![Docker Compose](./images/check_logs.png)
 
-7. **Delete all Kubernetes resources:**
+7. **These commands clean up all deployed resources in the Kubernetes cluster and stop Minikube:**
 
     ```bash
     kubectl delete all --all
     ```
 
-8. **Stop Minikube:**
-
     ```bash
     minikube stop
     ```
-
-    These commands clean up all deployed resources in the Kubernetes cluster and stop Minikube.
